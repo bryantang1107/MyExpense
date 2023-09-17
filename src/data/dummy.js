@@ -511,7 +511,7 @@ export const links = [
     title: "Dashboard",
     links: [
       {
-        name: "Asset",
+        name: "dashboard",
         icon: <AiOutlineDollarCircle />,
       },
     ],
@@ -624,46 +624,6 @@ export const chatData = [
     message: "Jolly completed tasks",
     desc: "Assign her new tasks",
     time: "1:12 AM",
-  },
-];
-
-export const earningData = [
-  {
-    icon: <MdOutlineSupervisorAccount />,
-    amount: "39,354",
-    percentage: "-4%",
-    title: "Customers",
-    iconColor: "#03C9D7",
-    iconBg: "#E5FAFB",
-    pcColor: "red-600",
-  },
-  {
-    icon: <BsBoxSeam />,
-    amount: "4,396",
-    percentage: "+23%",
-    title: "Products",
-    iconColor: "rgb(255, 244, 229)",
-    iconBg: "rgb(254, 201, 15)",
-    pcColor: "green-600",
-  },
-  {
-    icon: <FiBarChart />,
-    amount: "423,39",
-    percentage: "+38%",
-    title: "Sales",
-    iconColor: "rgb(228, 106, 118)",
-    iconBg: "rgb(255, 244, 229)",
-
-    pcColor: "green-600",
-  },
-  {
-    icon: <HiOutlineRefresh />,
-    amount: "39,354",
-    percentage: "-12%",
-    title: "Refunds",
-    iconColor: "rgb(0, 194, 146)",
-    iconBg: "rgb(235, 250, 242)",
-    pcColor: "red-600",
   },
 ];
 
@@ -3016,8 +2976,6 @@ export const ecomPieChartData = [
 
 export const stackedChartData = [
   [
-    { x: "Jan", y: 111.1 },
-    { x: "Feb", y: 127.3 },
     { x: "Mar", y: 143.4 },
     { x: "Apr", y: 159.9 },
     { x: "May", y: 159.9 },
@@ -3025,8 +2983,6 @@ export const stackedChartData = [
     { x: "July", y: 159.9 },
   ],
   [
-    { x: "Jan", y: 111.1 },
-    { x: "Feb", y: 127.3 },
     { x: "Mar", y: 143.4 },
     { x: "Apr", y: 159.9 },
     { x: "May", y: 159.9 },

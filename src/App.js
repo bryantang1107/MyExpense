@@ -27,7 +27,6 @@ const App = () => {
   const { themeSettings, setThemeSettings, currentColor, currentMode } =
     useThemeContext();
   //we destructure the object value
-
   return (
     <div className={currentMode === "dark" ? "dark" : ""}>
       <Router>
@@ -69,7 +68,7 @@ const App = () => {
                 {/* each element is a page component on its own */}
                 {/* dashboard  */}
                 <Route path="/" element={<Asset />} />
-                <Route path="/asset" element={<Asset />} />
+                <Route path="/dashboard" element={<Asset />} />
 
                 {/* pages  */}
                 <Route path="/watchlists" element={<WatchLists />} />

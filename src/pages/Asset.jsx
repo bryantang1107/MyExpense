@@ -1,24 +1,26 @@
 import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import { GoPrimitiveDot } from "react-icons/go";
 import { Stacked, Pie, Button, SparkLine } from "../components/index.jsx";
 import { BsBoxSeam, BsCurrencyBitcoin } from "react-icons/bs";
-import {
-  earningData,
-  SparklineAreaData,
-  ecomPieChartData,
-} from "../data/dummy";
+import { SparklineAreaData, ecomPieChartData } from "../data/dummy";
 import { useThemeContext } from "../contexts/ThemeProvider";
 
 const Expense = () => {
   const { currentColor } = useThemeContext();
+
+  const calculatePercentage = (budget, expense) => {
+    return ((expense / budget) * 100).toFixed(2);
+  };
+
   return (
     <div className="mt-12">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
           <div className="flex justify-between items-center">
             <div>
-              <p className="font-bold text-gray-400">Total Assets</p>
+              <p className="font-bold text-gray-400">My Portfolio</p>
               <p className="text-2xl tracking-wide">$3,488,123.23</p>
             </div>
           </div>
@@ -65,42 +67,21 @@ const Expense = () => {
               <span className="text-lg font-semibold">RM1500</span>
               <span className={`text-sm text-[#03C9D7] ml-2`}>5%</span>
             </p>
-            <p className="text-sm text-gray-400 mt-1">Stocks</p>
+            <p className="text-sm text-gray-400 mt-1">Cryptocurrency</p>
           </div>
-          {/* FD, EPF */}
-          {/* {earningData.map((data, index) => {
-            return (
-              <div
-                key={index}
-                className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl"
-              >
-                <button
-                  type="button"
-                  style={{
-                    color: data.iconColor,
-                    backgroundColor: data.iconBg,
-                  }}
-                  className="text-2xl opacity-[0.8] rounded-full p-3 hover:drop-shadow-xl"
-                >
-                  {data.icon}
-                </button>
-                <p className="mt-3">
-                  <span className="text-lg font-semibold">{data.amount}</span>
-                  <span className={`text-sm text-${data.pcColor} ml-2`}>
-                    {data.percentage}
-                  </span>
-                </p>
-                <p className="text-sm text-gray-400 mt-1">{data.title}</p>
-              </div>
-            );
-          })} */}
         </div>
       </div>
 
       <div className="flex gap-10 flex-wrap justify-center">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780">
           <div className="flex justify-between ">
-            <p className="font-semibold text-xl">Revenue Update(s)</p>
+            <p
+              className={`font-semibold text-xl`}
+              style={{ color: currentColor }}
+            >
+              {new Date().toLocaleString("default", { month: "long" })}'s
+              Expense
+            </p>
             <div className="flex items-center gap-4">
               <p className="flex items-center gap-2 text-gray-600  p-2 rounded-full text-center cursor-default">
                 <span className="dark:text-white">
@@ -109,7 +90,8 @@ const Expense = () => {
                 <span className="dark:text-white">Expense</span>
               </p>
               <p
-                className={`flex items-center gap-1 text-[${currentColor}] hover:bg-slate-100 p-2 rounded-full text-center cursor-default`}
+                className={`flex items-center gap-1] hover:bg-slate-100 p-2 rounded-full text-center cursor-default`}
+                style={{ color: currentColor }}
               >
                 <span>
                   <GoPrimitiveDot />
@@ -127,7 +109,7 @@ const Expense = () => {
                     className={`p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white ml-3 text-sm`}
                     style={{ backgroundColor: currentColor }}
                   >
-                    23%
+                    {calculatePercentage(93438, 48438)}%
                   </span>
                 </p>
                 <p className="text-gray-500 mt-1">Budget</p>
@@ -150,12 +132,14 @@ const Expense = () => {
                 />
               </div>
               <div className="mt-10">
-                <Button
-                  color="white"
-                  bgColor={currentColor}
-                  text="Download Report"
-                  borderRadius="10px"
-                ></Button>
+                <Link to="/expense">
+                  <Button
+                    color="white"
+                    bgColor={currentColor}
+                    text="Add Expense"
+                    borderRadius="10px"
+                  ></Button>
+                </Link>
               </div>
             </div>
             <div>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel } from "react-icons/md";
@@ -8,7 +7,6 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { useThemeContext } from "../contexts/ThemeProvider";
 const Sidebar = () => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
-  const [path, setPath] = useState(window.location.pathname);
   const { currentColor } = useThemeContext();
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 900) {
@@ -27,15 +25,13 @@ const Sidebar = () => {
         <>
           <div className="flex justify-between items-center">
             <Link
-              to="/"
-              onClick={() => {
-                setActiveMenu(false);
-                handleCloseSideBar();
-              }}
+              to="/dashboard"
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
               <SiShopware style={{ color: currentColor }} />{" "}
-              <span style={{ color: currentColor }}>MyAssets</span>
+              <span style={{ color: currentColor }} className="tracking-wider">
+                MyCapital
+              </span>
             </Link>
             <TooltipComponent content="Menu" position="BottomCenter">
               <button
@@ -45,7 +41,7 @@ const Sidebar = () => {
                   setActiveMenu((prev) => !prev); //toggle
                 }}
               >
-                <MdOutlineCancel />
+                <MdOutlineCancel style={{ color: currentColor }} />
               </button>
             </TooltipComponent>
           </div>
@@ -60,55 +56,28 @@ const Sidebar = () => {
                     {item.title}
                   </p>
                   {item.links.map((link, index1) => {
-                    if (index == 0) {
-                      return (
-                        <NavLink
-                          to={`/${link.name}`}
-                          key={index1}
-                          onClick={() => {
-                            setPath("/expense");
-                            handleCloseSideBar();
-                          }}
-                          className={
-                            path === "/expense" || path === "/"
-                              ? activeLink
-                              : normalLink
-                          }
-                          style={{
-                            backgroundColor:
-                              path === "/expense" || path === "/"
-                                ? currentColor
-                                : "",
-                          }}
-                        >
-                          {link.icon}
-                          <span className="capitalize">{link.name}</span>
-                        </NavLink>
-                      );
-                    } else {
-                      return (
-                        <NavLink
-                          to={`/${link.name}`}
-                          key={index1}
-                          onClick={() => {
-                            handleCloseSideBar();
-                            setPath("lol");
-                          }}
-                          className={({ isActive }) => {
-                            return isActive ? activeLink : normalLink;
-                            //isActive state, given to us by NavLink component
-                          }}
-                          style={({ isActive }) => {
-                            return {
-                              backgroundColor: isActive && currentColor,
-                            };
-                          }}
-                        >
-                          {link.icon}
-                          <span className="capitalize">{link.name}</span>
-                        </NavLink>
-                      );
-                    }
+                    return (
+                      <NavLink
+                        to={`/${link.name}`}
+                        key={index1}
+                        onClick={() => {
+                          handleCloseSideBar();
+                        }}
+                        className={({ isActive }) => {
+                          return isActive ? activeLink : normalLink;
+                          //isActive state, given to us by NavLink component
+                          //detect path to determine whether it is active
+                        }}
+                        style={({ isActive }) => {
+                          return {
+                            backgroundColor: isActive && currentColor,
+                          };
+                        }}
+                      >
+                        {link.icon}
+                        <span className="capitalize">{link.name}</span>
+                      </NavLink>
+                    );
                   })}
                 </div>
               );
