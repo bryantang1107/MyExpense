@@ -28,7 +28,7 @@ const Expense = () => {
             <Button
               color="white"
               bgColor={currentColor}
-              text="Download"
+              text="View"
               borderRadius="10px"
               size="md"
             ></Button>

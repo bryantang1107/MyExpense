@@ -18,7 +18,7 @@ import { Header } from "../components";
 
 const Orders = () => {
   return (
-    <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
+    <div className="m-2 md:m-10 p-2 md:p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header category="Page" title="My Watchlist" />
       <GridComponent id="grid" dataSource={ordersData} allowPaging allowSorting>
         <ColumnsDirective>

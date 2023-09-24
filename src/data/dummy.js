@@ -22,9 +22,7 @@ import {
   BsChatLeft,
   BsCurrencyBitcoin,
 } from "react-icons/bs";
-import { RiContactsLine, RiStockLine } from "react-icons/ri";
-import { MdOutlineSupervisorAccount } from "react-icons/md";
-import { HiOutlineRefresh } from "react-icons/hi";
+import { RiStockLine } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
 import { GiShoppingCart, GiEyeTarget } from "react-icons/gi";
 import { GrLocation } from "react-icons/gr";
@@ -39,7 +37,7 @@ import product4 from "./product4.jpg";
 import product5 from "./product5.jpg";
 import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
-import product8 from "./product8.jpg";
+import axios from "axios";
 
 export const gridOrderImage = (props) => (
   <div>
@@ -77,11 +75,6 @@ export const kanbanGrid = [
 ];
 const gridEmployeeProfile = (props) => (
   <div className="flex items-center gap-2">
-    <img
-      className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
-      alt="employee"
-    />
     <p>{props.Name}</p>
   </div>
 );
@@ -465,7 +458,7 @@ export const customersGrid = [
 
 export const employeesGrid = [
   {
-    headerText: "Employee",
+    headerText: "Stock",
     width: "150",
     template: gridEmployeeProfile, //for template = not sortable
     textAlign: "Center",
@@ -473,7 +466,7 @@ export const employeesGrid = [
   { field: "Name", headerText: "", width: "0", textAlign: "Center" },
   {
     field: "Title",
-    headerText: "Designation",
+    headerText: "Exchange",
     width: "170",
     textAlign: "Center",
   },
@@ -482,27 +475,6 @@ export const employeesGrid = [
     width: "120",
     textAlign: "Center",
     template: gridEmployeeCountry,
-  },
-
-  {
-    field: "HireDate",
-    headerText: "Hire Date",
-    width: "135",
-    format: "yMd",
-    textAlign: "Center",
-  },
-
-  {
-    field: "ReportsTo",
-    headerText: "Reports To",
-    width: "120",
-    textAlign: "Center",
-  },
-  {
-    field: "EmployeeID",
-    headerText: "Employee ID",
-    width: "125",
-    textAlign: "Center",
   },
 ];
 
@@ -1406,6 +1378,16 @@ export const customersData = [
   },
 ];
 
+const getStocks = async () => {
+  // const response = await axios.get(
+  //   `https://api.twelvedata.com/stocks?apikey=${process.env.REACT_APP_TWELVE_DATA_API_KEY}&outputsize=200`
+  // );
+
+  // console.log(response.data);
+
+};
+
+getStocks();
 export const employeesData = [
   {
     EmployeeID: 1,
